@@ -63,3 +63,52 @@ function calculateShapeArea(shape: Shape): number {
     height: 6 
   });
   console.log(rectangleArea);
+
+  //5555555
+  function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {
+    return obj[key];
+  }
+  const person = { name: "Alice", age: 30 };
+  console.log(getProperty(person, "name"));
+
+  //666666666
+  type Profile = {
+    name: string;
+    age: number;
+    email: string;
+  }
+  
+  function updateProfile(profile: Profile, updates: Partial<Profile>): Profile {
+    return { ...profile, ...updates };
+  }
+  const myProfile = { name: "Alice", age: 25, email: "alice@example.com" };
+  console.log(updateProfile(myProfile, { age: 26 }));
+  
+//777777777
+class Car {
+  make: string;
+  model: string;
+  year: number;
+
+  constructor(make: string, model: string, year: number) {
+      this.make = make;
+      this.model = model;
+      this.year = year;
+  }
+
+  getCarAge(): number {
+      const currentYear = new Date().getFullYear();
+      return currentYear - this.year;
+  }
+}
+
+const car = new Car("Honda", "Civic", 2018);
+console.log(car.getCarAge()); 
+
+// 888888888
+function validateKeys<T>(obj: T, keys: (keyof T)[]): boolean {
+  return keys.every(key => key in obj);
+}
+
+const aPerson = { name: "Alice", age: 25, email: "alice@example.com" };
+console.log(validateKeys(aPerson, ["name", "age"]));
